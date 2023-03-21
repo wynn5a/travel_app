@@ -4,6 +4,7 @@ import 'package:travel_app/components/destination_list.dart';
 import 'package:travel_app/components/header.dart';
 import 'package:travel_app/components/label_section.dart';
 import 'package:travel_app/components/search_bar.dart';
+import 'package:travel_app/components/top_destination_list.dart';
 import 'package:travel_app/utils/styles.dart';
 
 class HomePage extends StatelessWidget {
@@ -23,7 +24,11 @@ class HomePage extends StatelessWidget {
               SizedBox(height: medium),
               LabelSection(label: 'Recommended', labelStyle: heading1),
               SizedBox(height: medium),
-              const DestinationListView()
+              const DestinationListView(),
+              SizedBox(height: medium),
+              LabelSection(label: 'Top Destination', labelStyle: heading2),
+              SizedBox(height: medium),
+              const TopDestinationList()
             ],
           ),
         ),

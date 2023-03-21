@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/components/destination_card.dart';
+import 'package:travel_app/models/destination.dart';
 import 'package:travel_app/utils/styles.dart';
 
 class DestinationListView extends StatelessWidget {
@@ -7,32 +8,28 @@ class DestinationListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Destination> destinations = [
+      Destination('assets/images/square-1.png', 'Japan Temple',
+          'Osaka Street, Japan', '￥120'),
+      Destination('assets/images/square-2.png', 'Gapura Merah',
+          'Tokyo Street, Japan', '￥110'),
+      Destination('assets/images/square-3.png', 'Tempio', 'Osaka Street, Japan',
+          '￥90'),
+    ];
     return SizedBox(
       height: 250,
-      child: ListView(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        children: const [
-          DestinationCard(
-            imagePath: 'assets/images/square-1.png',
-            name: 'Japan Temple',
-            location: 'Osaka Street, Japan',
-            price: '￥120',
-          ),
-          DestinationCard(
-            imagePath: 'assets/images/square-2.png',
-            name: 'Gapura Merah',
-            location: 'Tokyo Street, Japan',
-            price: '￥80',
-          ),
-          DestinationCard(
-            imagePath: 'assets/images/square-3.png',
-            name: 'Tempio',
-            location: 'Tokyo Street, Japan',
-            price: '￥120',
-          ),
-        ],
-      ),
+      child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: destinations.length,
+          itemBuilder: (context, index) {
+            var destination = destinations[index];
+            return DestinationCard(
+                imagePath: destination.imagePath,
+                name: destination.name,
+                location: destination.location,
+                price: destination.price);
+          }),
     );
   }
 }
